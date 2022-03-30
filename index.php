@@ -1,7 +1,7 @@
 <?php
 class Point {
-    private $x;
-    private $y;
+    public $x;
+    public $y;
     public static $counter;
     public function __construct($x, $y)
     {
@@ -31,10 +31,10 @@ class Point {
 
         return  "Точка с координатами ($this->x, $this->y)".'<br />';
     }
-    public function __get($name){
+/*    public function __get($name){
         if (isset($this->x[$name])) return $this->x[$name];
         return 'Класс Point работает только в двумерном пространстве';
-    }
+    }*/
     public function __set($name, $value){
         $this->x[$name] = $value;
     }
@@ -43,25 +43,35 @@ class Point {
     }
 }
 
-$point = new Point(3, 5);
-$point2 = new Point(4, 12);
-$point3 = new Point(1, 6);
+$x = '';
+$y = '';
+$file = 'coord.txt';
 
-echo $point->getX().'<br />';
-echo $point->getY().'<br />';
+    if(isset($_POST['save'])){
+        $point = new Point($_POST['x'], $_POST['y']);
+        file_put_contents($file, serialize($point));
+    }
 
-$point->setX(15);
-$point->setY(23);
-echo $point->getX().'<br />';
-echo $point->getY().'<br />';
-echo $point2->getX().'<br />';
-echo $point2->getY().'<br />';
-echo $point3->getX().'<br />';
-echo $point3->getY().'<br />';
-echo "--------------------".'<br />';
-echo Point::getCounter().'<br />';
-echo $point.'<br />';
-echo $point2.'<br />';
-echo $point3.'<br />';
-echo $point->z.'<br />';
-echo $point->setZ().'<br />';
+    if(isset($_POST['load'])){
+        if(file_exists($file)){
+            $point = unserialize(file_get_contents($file));
+            $x = $point->x;
+            $y= $point->y;
+        }
+    }
+?>
+
+<form name="form" method="post">
+    <div>
+        X:<input value="<?=$x?>" name="x" >
+    </div>
+    <div>
+        Y:<input value="<?=$y?>" name="y">
+    </div>
+    <div>
+        <input name="save" type="submit" value="Сохранить">
+    </div>
+    <div>
+        <input name="load" type="submit" value="Загрузить">
+    </div>
+</form>
