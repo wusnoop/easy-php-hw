@@ -1,5 +1,5 @@
 <?php
-namespace canmovename;
+namespace traits;
 trait CanMove{
     public function move()
     {

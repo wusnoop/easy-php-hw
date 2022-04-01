@@ -1,8 +1,8 @@
 <?php
 
-namespace Aircraftname;
+namespace lib;
 
-use canflyname\CanFly;
+use traits\CanFly;
 
 class Aircraft
 {

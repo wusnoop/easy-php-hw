@@ -1,8 +1,8 @@
 <?php
 
-namespace carname;
+namespace lib;
 
-use \canmovename\CanMove;
+use traits\CanMove;
 
 class Car
 {

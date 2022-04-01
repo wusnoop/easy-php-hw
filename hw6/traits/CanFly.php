@@ -1,5 +1,5 @@
 <?php
-namespace canflyname;
+namespace traits;
 trait CanFly{
     public function fly()
     {
