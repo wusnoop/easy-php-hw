@@ -18,4 +18,5 @@ use lib\Aircraft;
 $car = new Car();
 echo $car->move();
 $air = new Aircraft();
-echo $air->fly();
+echo $air->fly()."<br \>";
+
