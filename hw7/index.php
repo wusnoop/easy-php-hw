@@ -6,8 +6,8 @@ class Valid {
     public static function validEmail($email){
 
         if ($email === "") throw new Exception("E-mail не указан");
-        elseif (!preg_match("/[0-9a-z]+@[a-z]/", $email)) throw new Exception("E-mail указан неправильно");
-        elseif (preg_match("/[0-9a-z]+@[a-z]/", $email)) return true;
+        elseif (!preg_match("/[0-9a-z]+@[a-z]+\.[a-z]+/", $email)) throw new Exception("E-mail указан неправильно");
+        elseif (preg_match("/[0-9a-z]+@[a-z]+\.[a-z]+/", $email)) return true;
 
     }
 
