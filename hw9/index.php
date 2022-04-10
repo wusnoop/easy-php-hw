@@ -1,29 +1,44 @@
 <?php
+
+
     $select = @$_POST['select'];
-    $form =@$_POST['myform'];
-    if(isset($form)){
-        if($select == 'yandex'){
-            header('Location: https://yandex.ru');
+    if(isset($_POST['Choose'])){
+
+
+        setcookie('bg', '$color', time() +3600);
+
+        if($select == 'red'){
+            echo '<body style="background: #ff3128">';
         }
-        else if($select == 'google'){
-            header('Location: https://google.ru');
+        elseif ($select == 'green'){
+            echo '<body style="background: #2bff1d">';
+        }
+        elseif ($select == 'blue'){
+            echo '<body style="background: #418aff">';
         }
     }
 
 
 
+
 ?>
-<form  method="post" action="<?=$_SERVER['PHP_SELF']?>">
- <select size="2" name="select">
-     <option value="yandex" name="y">
-         Yandex
-     </option>
-     <option value="google" name="g">
-         Google
-     </option>
- </select>
-    <input type="submit" value="Send" name="myform">
-</form>
+
+    <form  method="post" action="<?=$_SERVER['PHP_SELF']?>">
+        <select size="3" name="select">
+            <option value="blue" name="b">
+                Blue
+            </option>
+            <option value="green" name="g">
+                Green
+            </option>
+            <option value="red" name="r">
+                Red
+            </option>
+        </select>
+        <input value="send" type="submit" name="Choose">
+    </form>
+
+
 
 
 
